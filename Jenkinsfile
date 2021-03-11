@@ -18,19 +18,16 @@ pipeline {
         sh 'npm install'
       }
     }
+    stage('Test App') {
+        steps {
+            sh 'npm test'
+        }
+    }
  
     stage('Clone git repo') {
       steps {
          git 'https://github.com/' + githuburl
       }
-    }
- 
-    
- 
-    stage('Test App') {
-        steps {
-            sh 'npm test'
-        }
     }
  
     stage('Build image') {
