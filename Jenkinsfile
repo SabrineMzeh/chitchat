@@ -13,6 +13,11 @@ pipeline {
   tools {nodejs "node"}
  
   stages {
+    stage('Install Node.js dependencies') {
+      steps {
+        sh 'npm install'
+      }
+    }
  
     stage('Clone git repo') {
       steps {
@@ -20,11 +25,7 @@ pipeline {
       }
     }
  
-    stage('Install Node.js dependencies') {
-      steps {
-        sh 'npm install'
-      }
-    }
+    
  
     stage('Test App') {
         steps {
