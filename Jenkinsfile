@@ -33,7 +33,6 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          sh 'apt install docker.io'
           dockerImage = docker.build(dockerhuburl + ":$BUILD_NUMBER")
         }
       }
