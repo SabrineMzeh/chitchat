@@ -33,6 +33,7 @@ pipeline {
     stage('Build image') {
       steps{
         script {
+          sh 'docker ps'
           dockerImage = docker.build(dockerhuburl + ":$BUILD_NUMBER")
         }
       }
