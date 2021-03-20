@@ -8,7 +8,7 @@ pipeline {
     dockerImage = ''
   }
  
-  agent jenkins-agent
+  agent any
  
   tools {nodejs "node"}
  
