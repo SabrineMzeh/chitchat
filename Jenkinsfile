@@ -8,7 +8,7 @@ pipeline {
     dockerImage = ''
   }
  
-  agent any
+ agent { dockerfile true }
  
   tools {nodejs "node"}
  
