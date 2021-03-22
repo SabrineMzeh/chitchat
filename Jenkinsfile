@@ -29,6 +29,11 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
+   stage('Build image') {
+      steps{
+         sh 'docker build -t sys7/chitchat .'
+        }
+      }
     stage('Deploy image') {
       steps{
         script {
@@ -39,14 +44,7 @@ pipeline {
         }
       }
     }
-    stage('Build image') {
-      steps{
-        script {
-          dockerImage = docker.build(dockerhuburl + ":$BUILD_NUMBER")
-        }
-      }
-    }
- 
+    
     stage('Test image') {
       steps {
         sh 'docker run -i ' + dockerhuburl + ':$BUILD_NUMBER npm test'
