@@ -8,8 +8,9 @@ pipeline {
     dockerImage = ''
   }
  
-  agent any
- 
+  
+ agent { Dockerfile true }
+
   tools {nodejs "node"}
  
   stages {
