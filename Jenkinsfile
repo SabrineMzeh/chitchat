@@ -29,6 +29,17 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
+   
+    stage('Deploy image') {
+      steps{
+        script {
+          docker.withRegistry(dockerregistry, dockerHub ) {
+            def customImage = docker.build("sys7/chitchat")
+           customImage.push()
+          }
+        }
+      }
+    }
    stage('Build image') {
           steps{
             script {
@@ -36,16 +47,6 @@ pipeline {
             }
           }
         }
-    stage('Deploy image') {
-      steps{
-        script {
-          docker.withRegistry(dockerregistry, dockerHub ) {
-            dockerImage.push("${env.BUILD_NUMBER}")
-            dockerImage.push("latest")
-          }
-        }
-      }
-    }
     
     stage('Test image') {
       steps {
