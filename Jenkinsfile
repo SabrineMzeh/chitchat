@@ -29,7 +29,16 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
- 
+    stage('Deploy image') {
+      steps{
+        script {
+          docker.withRegistry(dockerregistry, dockerhubcrd ) {
+            dockerImage.push("${env.BUILD_NUMBER}")
+            dockerImage.push("latest")
+          }
+        }
+      }
+    }
     stage('Build image') {
       steps{
         script {
@@ -44,16 +53,7 @@ pipeline {
       }
     }
  
-    stage('Deploy image') {
-      steps{
-        script {
-          docker.withRegistry(dockerregistry, dockerhubcrd ) {
-            dockerImage.push("${env.BUILD_NUMBER}")
-            dockerImage.push("latest")
-          }
-        }
-      }
-    }
+    
  
     stage('Remove image') {
       steps{
