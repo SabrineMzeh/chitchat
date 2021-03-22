@@ -9,7 +9,7 @@ pipeline {
   }
  
   
- agent { Dockerfile true }
+ agent { dockerfile true }
 
   tools {nodejs "node"}
  
