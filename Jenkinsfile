@@ -4,7 +4,7 @@ pipeline {
     dockerregistry = 'https://registry.hub.docker.com'
     dockerhuburl = 'sys7/chitchat'
     githuburl = 'SabrineMzeh/chitchat'
-    dockerhubcrd = 'dockerHub'
+    registryCredential = 'dockerHub'
     dockerImage = ''
   }
  
@@ -33,7 +33,7 @@ pipeline {
     stage('Deploy image') {
       steps{
         script {
-          docker.withRegistry(dockerregistry, dockerHub ) {
+          docker.withRegistry(dockerregistry, registryCredential ) {
             def customImage = docker.build("sys7/chitchat")
            customImage.push()
           }
