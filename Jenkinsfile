@@ -18,7 +18,7 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
-    }
+    
     stage('Build image') {
           steps{
             script {
