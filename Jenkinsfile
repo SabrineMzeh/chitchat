@@ -18,6 +18,12 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
+    stage('Initialize'){
+     steps{
+        def dockerHome = tool 'myDocker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
+    }
+    }
     stage('Build image') {
           steps{
             script {
