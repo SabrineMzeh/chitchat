@@ -11,7 +11,7 @@ spec:
         app: chitchat
     spec:
       containers:
-      - image: $dockerhuburl:$BUILD_NUMBER
+      - image: $
         name: nodejs
 ---
 apiVersion: v1
