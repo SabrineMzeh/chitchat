@@ -1,9 +1,9 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chitchat
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       name: chitchat
@@ -11,7 +11,7 @@ spec:
         app: chitchat
     spec:
       containers:
-      - image: $registry
+      - image: sys7/chitchat:latest
         name: nodejs
 ---
 apiVersion: v1
