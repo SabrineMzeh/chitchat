@@ -28,8 +28,8 @@ pipeline {
    stage('Deploy image') {
       steps{
         script {
-          ocker.withRegistry(dockerregistry, registryCredential ) {
-            dockerImage.push()
+          docker.withRegistry(dockerregistry, registryCredential ) {
+           dockerImage.push()
           }
         }
       }
