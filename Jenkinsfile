@@ -9,7 +9,7 @@ pipeline {
     dockerImage = ''
   }
 
-  tools {nodejs "node"}
+  tools {nodejs "nodejs"}
  
   stages {
     
