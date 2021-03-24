@@ -11,19 +11,21 @@ spec:
         app: chitchat
     spec:
       containers:
-      - image: $dockerhuburl:$BUILD_NUMBER
+      - image: $registry
         name: nodejs
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: NodePort
+  labels:
+    app: chitchat
+  name: chitchat
 spec:
-  type: NodePort
-#  externalIPs:
-#  - 192.168.1.7
+  ports:
+  - nodePort: 32223
+    port: 80
+    protocol: TCP
+    targetPort: 80
   selector:
     app: chitchat
-  ports:
-  - port: 8080
-    targetPort: 4141
+  type: NodePort
