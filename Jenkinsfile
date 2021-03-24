@@ -20,11 +20,6 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
-    stage('Install Node.js dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
    stage('Build image') {
           steps{
             script {
