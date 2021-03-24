@@ -47,8 +47,6 @@ pipeline {
    
    stage('Install Node.js dependencies') {
             steps {
-                sh 'apk add nodejs'
-                sh 'echo $PATH'
                 sh 'npm install'
             }
         }
