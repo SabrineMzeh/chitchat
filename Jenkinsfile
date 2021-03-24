@@ -25,6 +25,16 @@ pipeline {
             }
           }
         }
+   stage('Deploy image') {
+      steps{
+        script {
+          docker.withRegistry(registry, registryCredential ) {
+            dockerImage.push("${env.BUILD_NUMBER}")
+            dockerImage.push("latest")
+          }
+        }
+      }
+    }
    stage('Test image') {
       steps {
         sh 'docker run -i ' + registry
