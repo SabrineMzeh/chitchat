@@ -27,9 +27,9 @@ metadata:
 spec:
   ports:
   - nodePort: 32223
-    port: 80
+    port: 8080
     protocol: TCP
-    targetPort: 80
+    targetPort: 4141
   selector:
     app: chitchat
   type: NodePort
