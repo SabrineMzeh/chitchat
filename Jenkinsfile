@@ -27,7 +27,7 @@ pipeline {
         }
    stage('Test image') {
       steps {
-        sh 'docker run -i ' + registry + ':$BUILD_NUMBER npm test'
+        sh 'docker run -i ' + registry
       }
     }
    
