@@ -18,6 +18,14 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
+   stage('Build image') {
+          steps{
+            script {
+              dockerImage = docker.build registry
+            }
+          }
+        }
+   
    stage('Install Node.js dependencies') {
             steps {
                 sh 'apk add nodejs'
@@ -31,13 +39,7 @@ pipeline {
                 sh 'npm test'
             }
         }
-    stage('Build image') {
-          steps{
-            script {
-              dockerImage = docker.build registry 
-            }
-          }
-        }
+    
    
    
   }
