@@ -13,6 +13,10 @@ spec:
       containers:
       - image: sys7/chitchat:latest
         name: nodejs
+
+  selector:
+    matchLabels:
+     app: chitchat
 ---
 apiVersion: v1
 kind: Service
@@ -29,3 +33,4 @@ spec:
   selector:
     app: chitchat
   type: NodePort
+
