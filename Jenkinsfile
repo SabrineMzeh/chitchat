@@ -20,6 +20,11 @@ pipeline {
          git 'https://github.com/' + githuburl
       }
     }
+    stage('Install Node.js dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
    stage('Build image') {
           steps{
             script {
@@ -40,23 +45,6 @@ pipeline {
           steps{
             sh 'docker rmi $registry '
           }
-        }
-   stage('Test image') {
-      steps {
-        sh 'docker run -i ' + registry
-      }
-    }
-   
-   stage('Install Node.js dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
- 
-        stage('Test App') {
-            steps {
-                sh 'npm test'
-            }
         }
     
    stage('Deploy App') {
